@@ -10,7 +10,7 @@ import coin from '../../assets/coin.svg';
 
 const TopBar = () => {
   const { user } = useAuthContext();
-  console.log(user);
+
   const [openModal, setOpenModal] = useState();
   const props = { openModal, setOpenModal };
 
