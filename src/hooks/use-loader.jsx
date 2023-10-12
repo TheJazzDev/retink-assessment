@@ -19,7 +19,7 @@ const useLoader = () => {
       <motion.span
         animate={{ rotate: 360 }}
         transition={{ ease: 'linear', duration: 2, repeat: Infinity }}>
-        <img src={logo} alt='logo' className='w-16' />
+        <img src={logo} alt='logo' className='w-12' />
       </motion.span>
       <span className='text-[1.2rem]'>Retink. Retink.. Retink...</span>
     </motion.div>
