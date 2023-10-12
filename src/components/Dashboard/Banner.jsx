@@ -3,6 +3,7 @@ import { Select } from 'flowbite-react';
 import sprial from '../../assets/sprial-design.svg';
 import menu from '../../assets/menu.svg';
 import search from '../../assets/search.svg';
+import Profile from './Profile';
 
 const Banner = () => {
   const { user } = useAuthContext();
@@ -24,19 +25,17 @@ const Banner = () => {
       </div>
       <div className='flex items-center justify-between md:justify-normal md:flex-col md:items-end z-10'>
         <img src={menu} alt='menu' className='md:hidden' />
-        <div className='max-w-md md:mr-6 md:mb-8 border-none' id='select'>
-          <Select id='countries' required>
+        <div className='max-w-md md:mr-6 md:mb-8 border-none focus:outline-none outline-none focus:border-none'>
+          <Select required>
             <option>Zara ventures</option>
             <option>Zara1 ventures</option>
             <option>Zara2 ventures</option>
             <option>Zara3 ventures</option>
           </Select>
         </div>
-        <img
-          src={user.photoURL}
-          alt='profile'
-          className='w-9 h-9 rounded-[10px] md:hidden'
-        />
+        <span className='md:hidden'>
+          <Profile />
+        </span>
         <div className='hidden md:block px-[10px] py-2 rounded-[10px] bg-white bg-opacity-10 backdrop-blur-lg border border-white h-fit md:max-w-[637px]'>
           <p className='text-xs md:text-base mb-6'>
             You should have more engagement by 6pm today, try posting then. 📆{' '}
@@ -56,7 +55,7 @@ const Banner = () => {
         <input
           type='search'
           placeholder='Search for templates, projects, etc'
-          className='flex-1 text-xs py-3 outline-none'
+          className='flex-1 text-xs py-3 outline-none border-none'
         />
       </div>
     </div>

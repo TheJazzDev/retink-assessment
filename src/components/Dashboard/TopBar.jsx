@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
-import { useAuthContext } from '../../context/AuthContext';
-import { Modal, Tooltip } from 'flowbite-react';
+import { Tooltip } from 'flowbite-react';
 import calender from '../../assets/calender.svg';
 import alert from '../../assets/alert.svg';
 import search from '../../assets/search.svg';
 import settings from '../../assets/search-settings.svg';
 import remove from '../../assets/remove.svg';
 import coin from '../../assets/coin.svg';
+import Profile from './Profile';
 
 const TopBar = () => {
-  const { user } = useAuthContext();
-
-  const [openModal, setOpenModal] = useState();
-  const props = { openModal, setOpenModal };
-
   return (
     <div className='hidden md:flex h-[82px] sticky top-0 left-0 right-0 z-20 bg-white'>
       <div className='flex-1 flex justify-between items-center gap-2 md:gap-0 border pl-[18px] shadow-lg'>
@@ -58,37 +52,8 @@ const TopBar = () => {
             className='cursor-pointer hover:scale-125 transition-all duration-300 ease-in-out'
           />
         </Tooltip>
-        <Tooltip content='Profile' placement='bottom'>
-          <img
-            src={user.photoURL}
-            alt='profile'
-            onClick={() => props.setOpenModal('dismissible')}
-            className='w-9 h-9 rounded-[10px] cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out'
-          />
-        </Tooltip>
+        <Profile />
       </div>
-      <Modal
-        dismissible
-        show={props.openModal === 'dismissible'}
-        onClose={() => props.setOpenModal(undefined)}
-        className='bg-black'>
-        <Modal.Header>Profile</Modal.Header>
-        <Modal.Body>
-          <div className='text-center space-y-6'>
-            <img
-              src={user.photoURL}
-              alt='profile'
-              className='w-28 h-28 rounded-full mx-auto mb-2'
-            />
-            <p className='text-lg leading-relaxed text-gray-500'>
-              {user.displayName}
-            </p>
-            <p className='text-lg leading-relaxed text-gray-500'>
-              {user.email}
-            </p>
-          </div>
-        </Modal.Body>
-      </Modal>
     </div>
   );
 };
