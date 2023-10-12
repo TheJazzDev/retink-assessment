@@ -1,8 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import './App.css';
+import useLoader from './hooks/use-loader';
 
 function App() {
-  return (
+  const { loading, loader } = useLoader();
+
+  return loading ? (
+    loader
+  ) : (
     <div className='font-main'>
       <Outlet />
     </div>

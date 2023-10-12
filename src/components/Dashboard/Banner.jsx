@@ -1,25 +1,8 @@
-import { Select, SelectItem } from '@nextui-org/react';
-import { SelectorIcon } from './SelectorIcon';
+import { useAuthContext } from '../../context/AuthContext';
+import { Select } from 'flowbite-react';
 import sprial from '../../assets/sprial-design.svg';
-import arrow from '../../assets/arrow.svg';
 import menu from '../../assets/menu.svg';
 import search from '../../assets/search.svg';
-import { useAuthContext } from '../../context/AuthContext';
-
-const items = [
-  {
-    label: 'Retink enterprise',
-    value: 'retink',
-  },
-  {
-    label: 'Test ventures',
-    value: 'test',
-  },
-  {
-    label: 'Zara ventures',
-    value: 'zara',
-  },
-];
 
 const Banner = () => {
   const { user } = useAuthContext();
@@ -35,28 +18,18 @@ const Banner = () => {
         <p className='text-base text-retink-grey-05 md:text-xl mb-12'>
           Lets create something awesome today ✨💫
         </p>
-        <button className='hidden md:block text-base text-primary-purple-normal border-2 border-primary-purple-normal px-12 py-3 mb-6 rounded-[20px]'>
+        <button className='hidden md:block text-base text-primary-purple-normal border-2 border-primary-purple-normal px-12 py-3 mb-6 rounded-[20px] hover:bg-primary-purple-light-hover'>
           Start Creating
         </button>
       </div>
       <div className='flex items-center justify-between md:justify-normal md:flex-col md:items-end z-10'>
         <img src={menu} alt='menu' className='md:hidden' />
-        <div className='md:mr-6 md:mb-8'>
-          <Select
-            placeholder='Zara ventures'
-            labelPlacement='outside'
-            aria-label='lol'
-            className='text-sm rounded-[10px] bg-white w-[146px] hover:bg-primary-purple-light-hover h-'
-            disableSelectorIconRotation
-            selectorIcon={<SelectorIcon />}>
-            {items.map((item) => (
-              <SelectItem
-                key={item.value}
-                value={item.value}
-                className='hover:bg-primary-purple-light-hover'>
-                {item.label}
-              </SelectItem>
-            ))}
+        <div className='max-w-md md:mr-6 md:mb-8 border-none' id='select'>
+          <Select id='countries' required>
+            <option>Zara ventures</option>
+            <option>Zara1 ventures</option>
+            <option>Zara2 ventures</option>
+            <option>Zara3 ventures</option>
           </Select>
         </div>
         <img

@@ -1,4 +1,6 @@
+import React, { useState } from 'react';
 import { useAuthContext } from '../../context/AuthContext';
+import { Modal, Tooltip } from 'flowbite-react';
 import calender from '../../assets/calender.svg';
 import alert from '../../assets/alert.svg';
 import search from '../../assets/search.svg';
@@ -8,6 +10,9 @@ import coin from '../../assets/coin.svg';
 
 const TopBar = () => {
   const { user } = useAuthContext();
+  console.log(user);
+  const [openModal, setOpenModal] = useState();
+  const props = { openModal, setOpenModal };
 
   return (
     <div className='hidden md:flex h-[82px] sticky top-0 left-0 right-0 z-20 bg-white'>
@@ -21,7 +26,7 @@ const TopBar = () => {
           <input
             type='search'
             placeholder='Search for templates, projects, etc'
-            className='flex-1 text-xs py-3.5 outline-none'
+            className='flex-1 text-xs py-3.5 outline-none border-none'
           />
           <span className='flex gap-1 md:gap-2.5 mr-2'>
             <img src={settings} alt='settings' />
@@ -38,27 +43,52 @@ const TopBar = () => {
           </span>
         </div>
       </div>
-      <div className='flex justify-between items-center md:w-[344px] border px-2 m-1 bg-primary-purple-light-hover'>
-        <span className='rounded-[10px] transition-all duration-300 ease-in-out'>
+      <div className='flex justify-between items-center md:w-[344px] border pl-8 pr-4 m-1 bg-primary-purple-light-hover'>
+        <Tooltip content='Calender' placement='bottom'>
           <img
             src={calender}
             alt='calender'
-            className='p-6 cursor-pointer hover:scale-125 transition-all duration-300 ease-in-out'
+            className='cursor-pointer hover:scale-125 transition-all duration-300 ease-in-out'
           />
-        </span>
-        <span className='rounded-[10px] transition-all duration-300 ease-in-out'>
+        </Tooltip>
+        <Tooltip content='Alert' placement='bottom'>
           <img
             src={alert}
             alt='alert'
-            className='p-6 cursor-pointer hover:scale-125 transition-all duration-300 ease-in-out'
+            className='cursor-pointer hover:scale-125 transition-all duration-300 ease-in-out'
           />
-        </span>
-        <img
-          src={user.photoURL}
-          alt='profile'
-          className='w-9 h-9 rounded-[10px] cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out'
-        />
+        </Tooltip>
+        <Tooltip content='Profile' placement='bottom'>
+          <img
+            src={user.photoURL}
+            alt='profile'
+            onClick={() => props.setOpenModal('dismissible')}
+            className='w-9 h-9 rounded-[10px] cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out'
+          />
+        </Tooltip>
       </div>
+      <Modal
+        dismissible
+        show={props.openModal === 'dismissible'}
+        onClose={() => props.setOpenModal(undefined)}
+        className='bg-black'>
+        <Modal.Header>Profile</Modal.Header>
+        <Modal.Body>
+          <div className='text-center space-y-6'>
+            <img
+              src={user.photoURL}
+              alt='profile'
+              className='w-28 h-28 rounded-full mx-auto mb-2'
+            />
+            <p className='text-lg leading-relaxed text-gray-500'>
+              {user.displayName}
+            </p>
+            <p className='text-lg leading-relaxed text-gray-500'>
+              {user.email}
+            </p>
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
