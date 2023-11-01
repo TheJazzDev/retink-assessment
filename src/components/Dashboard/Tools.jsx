@@ -51,11 +51,11 @@ const Tools = () => {
       </p>
       <div className='md:border rounded-[20px] md:bg-retink-grey-0 px-2'>
         <h4 className='text-sm lg:text-lg mt-8 lg:mt-3 mb-2'>Blog writing</h4>
-        <div className='flex gap-[18px] overflow-x-auto -ml-2 px-2 py-4'>
+        <div className='flex gap-[18px] overflow-x-scroll -ml-2 px-2 py-4'>
           {items.map((item) => (
             <div
               key={item.key}
-              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg'>
+              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg cursor-pointer'>
               <span className='flex justify-between items-center'>
                 <img src={item.icon} alt='icon' />
                 <img src={trending} alt='trending' />
@@ -75,7 +75,7 @@ const Tools = () => {
           {items.map((item) => (
             <div
               key={item.key}
-              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg'>
+              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg cursor-pointer'>
               <span className='flex justify-between items-center'>
                 <img src={item.icon} alt='icon' />
                 <img src={trending} alt='trending' />
@@ -95,7 +95,7 @@ const Tools = () => {
           {items.map((item) => (
             <div
               key={item.key}
-              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg'>
+              className='p-1 md:px-[21px] md:pt-[14px] md:pb-[30px] rounded-[10px] w-[142px] md:w-[331px] bg-white flex-shrink-0 shadow-lg cursor-pointer'>
               <span className='flex justify-between items-center'>
                 <img src={item.icon} alt='icon' />
                 <img src={trending} alt='trending' />

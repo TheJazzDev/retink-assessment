@@ -5,7 +5,7 @@ import Tools from './Tools';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='select-none'>
       <SideNav />
       <div className='md:pl-[106px]'>
         <TopBar />
